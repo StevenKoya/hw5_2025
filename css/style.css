@@ -8,6 +8,7 @@ body {
     align-items: center;
   }
   
+  /* Header */
   header {
     display: flex;
     justify-content: space-between;
@@ -18,6 +19,7 @@ body {
     width: 100%;
   }
   
+  /* Navigation */
   .nav_links {
     display: flex;
     gap: 20px;
@@ -32,6 +34,7 @@ body {
     color: white;
   }
   
+  /* Card Styling */
   .card {
     display: flex;
     flex-direction: column;
@@ -50,6 +53,7 @@ body {
     border-top-right-radius: 50px;
   }
   
+  /* Pricing */
   .pricing {
     display: flex;
     flex-wrap: wrap;
@@ -58,6 +62,7 @@ body {
     gap: 20px;
   }
   
+  /* Gallery */
   .gallery img {
     border: 10px solid #50C7C7;
     margin: 10px;
@@ -71,6 +76,7 @@ body {
     align-items: center;
   }
   
+  /* Logo Animation */
   @keyframes logo-grow {
     0% {
       width: 25px;
@@ -86,6 +92,7 @@ body {
     animation: logo-grow 5s ease-in-out;
   }
   
+  /* Larger Screens (900px and up) */
   @media (min-width: 900px) {
     header {
       position: sticky;
@@ -95,7 +102,7 @@ body {
     }
   
     body {
-      padding-top: 80px; 
+      padding-top: 80px; /* Prevents content from hiding under header */
     }
   
     .pricing {
@@ -107,6 +114,7 @@ body {
     }
   }
   
+  /* Center Navigation Mobile */
   @media (max-width: 720px) {
     .nav_links {
       flex-direction: column;
@@ -115,12 +123,14 @@ body {
     }
   }
   
+  /* Reduced Motion Preference */
   @media (prefers-reduced-motion: reduce) {
     .logo {
       animation: none;
     }
   }
   
+  /* Print Styles */
   @media print {
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -128,7 +138,7 @@ body {
     }
   
     header {
-      position: static; 
+      position: static; /* Ensures it prints cleanly */
     }
   
     .nav_links {
@@ -136,7 +146,7 @@ body {
     }
   
     .gallery {
-      display: none; 
+      display: none; /* Hides gallery on print */
     }
   
     .pricing {
@@ -146,7 +156,7 @@ body {
     .card {
       flex-basis: 325px;
       border: 2px solid #45ADDD;
-      page-break-inside: avoid; 
+      page-break-inside: avoid; /* Prevents awkward page breaks */
     }
   
     .card::after {
