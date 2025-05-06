@@ -1,109 +1,216 @@
-body{
-    margin: 0;
-    padding: 0;
-    font-size: 16pt; /* test for this! Make all sizes em or rem */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* Base styles */
+body {
+  font-family: 'Poppins', serif;
+  background: #f1f1f1 url("../images/concrete_seamless.png");
+  padding-top: 80px;
+  margin: 0;
+}
+
+/* Logo Animation */
+@keyframes growLogo {
+  from {
+    width: 25px;
+    opacity: 0;
   }
-  
-  header{
-    background: #fff;
-    border-bottom: 3px solid #50C7C7;
-    margin-bottom:20px
+  to {
+    width: 475px;
+    opacity: 1;
   }
-  
-  h1{
-    font-size: 2em;
+}
+
+.logo {
+  animation: growLogo 5s forwards;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .logo {
+    animation: none;
+  }
+}
+
+/* Header layout */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: white;
+}
+
+/* Nav links layout */
+.nav_links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav_links a:link,
+.nav_links a:visited {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Card layout and styles */
+.card {
+  border: 2px solid #45ADAD;
+  flex: 1 1 450px;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  background: #fff;
+  border-radius: 7px;
+  padding-bottom: 25px;
+}
+
+.card > header {
+  background: #288088;
+  border: 2px solid #45ADAD;
+  padding: 20px 0;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  text-align: center;
+}
+
+.card > ul {
+  list-style: none;
+  padding-left: 5px;
+}
+
+.card > ul li {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.card button {
+  width: 90%;
+  height: 40px;
+  border: 0;
+  margin-left: 5%;
+  border-radius: 7px;
+  background: #288080;
+  color: white;
+  font-size: 1em;
+}
+
+.card h3 {
+  font-size: 4em;
+  color: white;
+  text-align: center;
+}
+
+/* Pricing container */
+.pricing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 475px;
+}
+
+/* Gallery styles */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery img {
+  border: 10px solid #50C7C7;
+  margin: 10px;
+  width: 300px;
+}
+
+/* Footer */
+footer {
+  background-color: black;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+/* Mobile View */
+@media (max-width: 720px) {
+  header {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    line-height: 2;
-  }
-  
-  h2{
-    font-size: 1.5em;
-    text-align: center;
-    padding: 5px;
-  }
-  
-  p {
-    padding: 0 30px;
-  }
-  
-  a.skip{
-    background: white;
-    left: 0;
-    padding: 6px;
-    position: absolute;
-    top: -40px;
-    -webkit-transition: top 1s ease-out;
-    transition: top 1s ease-out;
-    z-index: 1;
-  }
-  
-  a.skip:focus{
-    top:20px;
-    color: black;
-    text-decoration-style: solid;
-  }
-  
-  *:focus{
-    border: 2px solid black;
   }
 
-
-  .nav_item a{
-    padding: 10px;
-  }
-  
-  .nav_item a:hover, a:focus{
-    color: #50C7C7;
-    text-decoration: underline;
-    -webkit-text-decoration-style: dotted;
-            text-decoration-style: dotted;
-  }
-
-  .pricing{
-    min-height: 475px;
+  .nav_links {
+    flex-direction: column;
+    align-items: center;
   }
 
   .card {
-    margin: 12px;
-    background: #fff;
-    border-radius: 7px;
-    padding: 0 0 25px 0;
-  
+    flex: 1 1 100%;
+    width: 100%;
   }
 
-  .card > ul{
-    list-style: none;
-    padding-left: 5px;
+  .pricing {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .card > ul li {
-    width: 90%;
-    margin: 20px auto;
-    
+}
+
+/* Large Screen View */
+@media (min-width: 900px) {
+  header {
+    justify-content: space-between;
   }
 
-.card button{
-    width: 90%;
-    height: 40px;
-    border: 0;
-    margin-left: 5%;
-    border-radius: 7px;
-    background: #288080;
-    color: white;
-    font-size: 1em;
-  }
-  
-  .card h3{
-    font-size: 4em;
-    color: white;
-    text-align: center;
-  }
-  
-  footer{
-    background-color: black;
-    color: white;
-    padding: 30px;
-    text-align: center;
+  .nav_links {
+    justify-content: flex-end;
   }
 
-  
+  .card {
+    flex: 1 1 275px;
+  }
+
+  .pricing {
+    justify-content: space-around;
+  }
+}
+
+/* Print View */
+@media print {
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: none;
+  }
+
+  .gallery {
+    display: none;
+  }
+
+  nav,
+  .nav_links {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .pricing {
+    align-items: flex-end;
+  }
+
+  .card {
+    border: 2px solid #45ADDD;
+    flex: 1 1 325px;
+  }
+
+  .card > ul li::before {
+    content: "👍 ";
+  }
+}

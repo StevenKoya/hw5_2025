@@ -1,167 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 body {
-    font-family: 'Poppins', serif;
-    background: #f1f1f1 url('../images/concrete_seamless.png') repeat;
-    margin: 0;
-    padding: 0;
-    display: flex;
+  font-family: 'Poppins', serif;
+  background: #f1f1f1 url("../images/concrete_seamless.png");
+  padding-top: 80px;
+  margin: 0;
+}
+
+/* Logo Animation */
+@keyframes growLogo {
+  from {
+    width: 25px;
+    opacity: 0;
+  }
+  to {
+    width: 475px;
+    opacity: 1;
+  }
+}
+
+.logo {
+  animation: growLogo 5s forwards;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .logo {
+    animation: none;
+  }
+}
+
+/* Header styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Nav link styling */
+.nav_links {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav_links a:link,
+.nav_links a:visited {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Cards */
+.card {
+  border: 2px solid #45ADAD;
+  flex: 1 1 450px;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.card > header {
+  background: #288088;
+  border: 2px solid #45ADAD;
+  padding: 20px 0;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  text-align: center;
+}
+
+/* Pricing container */
+.pricing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gallery */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery img {
+  border: 10px solid #50C7C7;
+  margin: 10px;
+  width: 300px;
+}
+
+/* Mobile view */
+@media (max-width: 720px) {
+  header {
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
-  
-  /* Header */
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #288088;
-    border-bottom: 2px solid #45ADAD;
-    padding: 20px;
+
+  .card {
+    flex: 1 1 100%;
     width: 100%;
   }
-  
-  /* Navigation */
-  .nav_links {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .nav_links a {
-    text-decoration: none;
-    color: white;
-  }
-  
-  .nav_links a:visited {
-    color: white;
-  }
-  
-  /* Card Styling */
-  .card {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 450px;
-    border: 2px solid #45ADAD;
-    border-radius: 50px 50px 10px 10px;
-    margin: 20px;
-    padding: 20px;
-  }
-  
-  .card > header {
-    background: #288088;
-    border: solid 2px #45ADAD;
-    padding: 20px;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-  }
-  
-  /* Pricing */
+
   .pricing {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 20px;
-  }
-  
-  /* Gallery */
-  .gallery img {
-    border: 10px solid #50C7C7;
-    margin: 10px;
-    width: 300px;
-  }
-  
-  .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-direction: column;
     align-items: center;
   }
-  
-  /* Logo Animation */
-  @keyframes logo-grow {
-    0% {
-      width: 25px;
-      opacity: 0;
-    }
-    100% {
-      width: 475px;
-      opacity: 1;
-    }
+
+  .nav_links {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .logo {
-    animation: logo-grow 5s ease-in-out;
+}
+
+/* Large screen view (>= 900px) */
+@media (min-width: 900px) {
+  header {
+    justify-content: space-between;
   }
-  
-  /* Larger Screens (900px and up) */
-  @media (min-width: 900px) {
-    header {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-    }
-  
-    body {
-      padding-top: 80px; /* Prevents content from hiding under header */
-    }
-  
-    .pricing {
-      justify-content: space-between;
-    }
-  
-    .card {
-      flex-basis: 275px;
-    }
+
+  .pricing {
+    justify-content: space-around;
   }
-  
-  /* Center Navigation Mobile */
-  @media (max-width: 720px) {
-    .nav_links {
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
+
+  .card {
+    flex: 1 1 275px;
   }
-  
-  /* Reduced Motion Preference */
-  @media (prefers-reduced-motion: reduce) {
-    .logo {
-      animation: none;
-    }
+}
+
+/* Print view */
+@media print {
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: none;
   }
-  
-  /* Print Styles */
-  @media print {
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: none;
-    }
-  
-    header {
-      position: static; /* Ensures it prints cleanly */
-    }
-  
-    .nav_links {
-      justify-content: space-between;
-    }
-  
-    .gallery {
-      display: none; /* Hides gallery on print */
-    }
-  
-    .pricing {
-      align-items: flex-end;
-    }
-  
-    .card {
-      flex-basis: 325px;
-      border: 2px solid #45ADDD;
-      page-break-inside: avoid; /* Prevents awkward page breaks */
-    }
-  
-    .card::after {
-      content: "👍";
-      display: block;
-      text-align: right;
-    }
+
+  .gallery {
+    display: none;
   }
+
+  nav,
+  .nav_links {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card {
+    border: 2px solid #45ADDD;
+    flex: 1 1 325px;
+  }
+
+  .pricing {
+    align-items: flex-end;
+  }
+
+  .card > ul {
+    list-style: none;
+    padding-left: 1rem;
+  }
+
+  .card > ul li::before {
+    content: "👍 ";
+  }
+}
