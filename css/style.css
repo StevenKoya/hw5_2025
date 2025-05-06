@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+/* Base styles */
 body {
   font-family: 'Poppins', serif;
   background: #f1f1f1 url("../images/concrete_seamless.png");
@@ -7,20 +8,20 @@ body {
   margin: 0;
 }
 
-/* Logo Animation */
-@keyframes growLogo {
+/* Logo animation: fade, slide, and scale */
+@keyframes logoFadeSlide {
   from {
-    width: 25px;
     opacity: 0;
+    transform: translateY(-30px) scale(0.8);
   }
   to {
-    width: 475px;
     opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
-.logo {
-  animation: growLogo 5s forwards;
+#logo {
+  animation: logoFadeSlide 1.2s ease-out;
   display: block;
   max-width: 100%;
   height: auto;
@@ -28,7 +29,7 @@ body {
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .logo {
+  #logo {
     animation: none;
   }
 }
@@ -45,7 +46,7 @@ header {
   z-index: 10;
 }
 
-/* Nav link styling */
+/* Navigation links */
 .nav_links {
   display: flex;
   gap: 1rem;
@@ -67,6 +68,9 @@ header {
   display: flex;
   flex-direction: column;
   margin: 1rem;
+  background: #fff;
+  border-radius: 7px;
+  padding-bottom: 25px;
 }
 
 .card > header {
@@ -78,12 +82,40 @@ header {
   text-align: center;
 }
 
-/* Pricing container */
+.card h3 {
+  font-size: 4em;
+  color: white;
+  text-align: center;
+}
+
+.card > ul {
+  list-style: none;
+  padding-left: 5px;
+}
+
+.card > ul li {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.card button {
+  width: 90%;
+  height: 40px;
+  border: 0;
+  margin-left: 5%;
+  border-radius: 7px;
+  background: #288080;
+  color: white;
+  font-size: 1em;
+}
+
+/* Pricing section */
 .pricing {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  min-height: 475px;
 }
 
 /* Gallery */
@@ -99,12 +131,25 @@ header {
   width: 300px;
 }
 
+/* Footer */
+footer {
+  background-color: black;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
 /* Mobile view */
 @media (max-width: 720px) {
   header {
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+
+  .nav_links {
+    flex-direction: column;
+    align-items: center;
   }
 
   .card {
@@ -116,17 +161,16 @@ header {
     flex-direction: column;
     align-items: center;
   }
-
-  .nav_links {
-    flex-direction: column;
-    align-items: center;
-  }
 }
 
-/* Large screen view (>= 900px) */
+/* Large screen view */
 @media (min-width: 900px) {
   header {
     justify-content: space-between;
+  }
+
+  .nav_links {
+    justify-content: flex-end;
   }
 
   .pricing {
@@ -155,13 +199,13 @@ header {
     justify-content: space-between;
   }
 
+  .pricing {
+    align-items: flex-end;
+  }
+
   .card {
     border: 2px solid #45ADDD;
     flex: 1 1 325px;
-  }
-
-  .pricing {
-    align-items: flex-end;
   }
 
   .card > ul {
